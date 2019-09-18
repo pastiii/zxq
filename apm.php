@@ -14,3 +14,9 @@ systemctl restart docker
 #拉取镜像
 docker pull 121.199.53.9:5000/apm-ubuntu:latest
 
+#重启
+/etc/init.d/cron stop
+/etc/init.d/cron start
+
+
+
