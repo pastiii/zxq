@@ -73,3 +73,12 @@ wget -P /tmp https://mirrors.aliyun.com/docker-ce/linux/centos/7/x86_64/stable/P
 yum install -y /tmp/docker*.rpm && rm -f /tmp/docker*.rpm
 
 mkdir /etc/dockerecho '{"registry-mirrors":["https://registry.docker-cn.com"]}' > /etc/docker/daemon.json
+
+
+
+docker service create \
+     --name nginx \ #服务名称
+     --config source=nginx_config,target=/etc/nginx/conf.d/site.conf \ #配置
+     --config source=homepage,target=/usr/share/nginx/html/index.html \ #配置
+     --publish published=3000,target=80 \ #暴露端口3000 映射80
+     nginx #images名称
